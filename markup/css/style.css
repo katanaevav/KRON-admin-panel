@@ -48,6 +48,24 @@ p {
   border: 0; 
 }
 
+/* Размеры скроллбара */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Трек поле скроллбара */
+::-webkit-scrollbar-track {
+  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+  background: none;
+}
+
+/* Ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px #212226;; 
+  background: #212226;
+  border-radius: 2px;
+}
+
 /*-------Страница авторизации-------*/
 
 .centering-block {
@@ -466,9 +484,14 @@ p {
   border-radius: 11px;
   width: 100%;
   height: calc(100vh - 260px);
-  overflow: auto;
+  
   padding: 24px 27px;
   box-sizing: border-box;
+}
+
+.events-group__table-wrapper {
+  height: 100%;
+  overflow: auto;
 }
 
 .dashboard-table {
@@ -502,6 +525,11 @@ p {
   background-color: #FFFFFF;
   position: sticky;
   top: 0;
+  z-index: 3;
+}
+
+.dashboard-table__head-data--dark {
+  background-color: #F7F7FC;
 }
 
 .dashboard-table__data {
