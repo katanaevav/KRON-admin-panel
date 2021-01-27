@@ -25,5 +25,8 @@
   "engines": {
     "node": "10"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
+  }
 }
