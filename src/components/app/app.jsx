@@ -7,12 +7,8 @@ import PageUsers from "../page-users/page-users.jsx"
 import PageRequests from "../page-requests/page-requests.jsx"
 import SignIn from "../sign-in/sign-in.jsx"
 
-const Screens = {
-  MAIN_SCREEN: 1,
-  USERS_SCREEN: 2,
-  REQUESTS_SCREEN: 3,
-  CITIES_SCREEN: 4,
-};
+import {Screens} from "../../const.js"
+
 
 
 class App extends PureComponent {
@@ -39,15 +35,31 @@ class App extends PureComponent {
       case Screens.USERS_SCREEN:
         return (
           <React.Fragment>
-            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageHeader 
+              selectedMenuItem = {Screens.USERS_SCREEN}
+              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+            />
             <PageUsers />
+          </React.Fragment>
+        );
+
+      case Screens.CITIES_SCREEN:
+        return (
+          <React.Fragment>
+            <PageHeader 
+              selectedMenuItem = {Screens.CITIES_SCREEN}
+              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+            />
           </React.Fragment>
         );
 
       case Screens.REQUESTS_SCREEN:
         return (
           <React.Fragment>
-            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageHeader 
+              selectedMenuItem = {Screens.REQUESTS_SCREEN}
+              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+            />
             <PageRequests />
           </React.Fragment>
         );
@@ -55,7 +67,10 @@ class App extends PureComponent {
       default:
         return (
           <React.Fragment>
-            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageHeader 
+              selectedMenuItem = {Screens.MAIN_SCREEN}
+              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+            />
             <PageMain />
           </React.Fragment>
         );

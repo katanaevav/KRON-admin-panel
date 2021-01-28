@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 
+import {Screens} from "../../const.js"
+
 class PageHeader extends PureComponent {
   constructor(props) {
     super(props);
@@ -14,7 +16,7 @@ class PageHeader extends PureComponent {
   }
 
   render() {
-    // const {movieTitle, movieSmallPoster} = this.props;
+    const {selectedMenuItem} = this.props;
 
     return (
       <React.Fragment>
@@ -23,7 +25,7 @@ class PageHeader extends PureComponent {
               <img className="page-header__logo" src="./img/logo.png" width="31" height="31" alt="Logo" />
               <nav className="page-header__nav nav">
                 <ul className="nav__menu">
-                  <li className="page-header__item nav__item page-header__item--selected" data-key={`1`}>
+                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.MAIN_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.MAIN_SCREEN}>
                     <a 
                       href="#"
                       onClick={this._menuItemClickHandler}
@@ -41,7 +43,7 @@ class PageHeader extends PureComponent {
                       Главная
                     </a>
                   </li>
-                  <li className="page-header__item nav__item" data-key={`2`}>
+                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.USERS_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.USERS_SCREEN}>
                     <a 
                       href="#"
                       onClick={this._menuItemClickHandler}
@@ -52,7 +54,7 @@ class PageHeader extends PureComponent {
                       Пользователи
                     </a>
                   </li>
-                  <li className="page-header__item nav__item" data-key={`3`}>
+                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.REQUESTS_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.REQUESTS_SCREEN}>
                     <a 
                       href="#"
                       onClick={this._menuItemClickHandler}
@@ -68,7 +70,7 @@ class PageHeader extends PureComponent {
                       Заявки
                     </a>
                   </li>
-                  <li className="page-header__item nav__item" data-key={`4`}>             
+                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.CITIES_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.CITIES_SCREEN}>             
                     <a 
                       href="#"
                       onClick={this._menuItemClickHandler}
@@ -139,6 +141,7 @@ class PageHeader extends PureComponent {
 
 
 PageHeader.propTypes = {
+  selectedMenuItem: PropTypes.number,
   onMenuItemClick: PropTypes.func.isRequired,
 };
 
