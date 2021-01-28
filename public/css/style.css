@@ -194,7 +194,6 @@ p {
   font-size: 14px;
   line-height: 16px;
   font-weight: 500;
-  padding-left: 10px;
 }
 
 .page-header__item {
@@ -209,6 +208,10 @@ p {
   padding: 0;
   margin: 0;
   list-style-type: none;
+}
+
+.page-header__item svg {
+  padding-right: 10px;
 }
 
 .page-header__item svg path {
@@ -254,8 +257,8 @@ p {
   margin-right: 0;
 }
 
-.page-header__user a {
-  padding-right: 12px;
+.page-header__user svg:last-child {
+  padding-left: 12px;
 }
 
 .page-header__item:hover a {
@@ -654,7 +657,7 @@ p {
 
 .filter__list {
   position: absolute;
-  z-index: 2;
+  z-index: 4;
   top: 14px;
   left: 14px;
   display: none;

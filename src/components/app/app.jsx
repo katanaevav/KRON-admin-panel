@@ -1,17 +1,83 @@
-import React from "react";
-import Main from "../main/main.jsx";
+import React, {PureComponent} from "react";
+import {Switch, Route, BrowserRouter} from "react-router-dom";
+// import PropTypes from "prop-types";
+import PageHeader from "../page-header/page-header.jsx";
+import PageMain from "../page-main/page-main.jsx";
+import PageUsers from "../page-users/page-users.jsx"
+import PageRequests from "../page-requests/page-requests.jsx"
+import SignIn from "../sign-in/sign-in.jsx"
 
-const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {promoMovieTitle, promoMovieGenre, promoMovieYear} = props;
-
-  return (
-    <Main
-      promoMovieTitle = {promoMovieTitle}
-      promoMovieGenre = {promoMovieGenre}
-      promoMovieYear = {promoMovieYear}
-    />
-  );
+const Screens = {
+  MAIN_SCREEN: 1,
+  USERS_SCREEN: 2,
+  REQUESTS_SCREEN: 3,
+  CITIES_SCREEN: 4,
 };
+
+
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this._menuHeaderItemClickHandler = this._menuHeaderItemClickHandler.bind(this);
+
+    this.state = {
+      currentPage: Screens.MAIN_SCREEN,
+    };
+  }
+
+  _menuHeaderItemClickHandler(pageIndex) {
+    this.setState({
+      currentPage: Number.parseInt(pageIndex, 10),
+    });
+  };
+
+  _renderApp() {
+    const {currentPage} = this.state;
+
+    switch (currentPage) {
+      case Screens.USERS_SCREEN:
+        return (
+          <React.Fragment>
+            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageUsers />
+          </React.Fragment>
+        );
+
+      case Screens.REQUESTS_SCREEN:
+        return (
+          <React.Fragment>
+            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageRequests />
+          </React.Fragment>
+        );
+
+      default:
+        return (
+          <React.Fragment>
+            <PageHeader onMenuItemClick = {this._menuHeaderItemClickHandler} />
+            <PageMain />
+          </React.Fragment>
+        );
+    }
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/sigin-in">
+            <SignIn />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+
+};
+
 
 export default App;
