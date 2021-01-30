@@ -45,7 +45,7 @@ p {
   height: 1px;
   padding: 0;
   margin: -1px;
-  border: 0; 
+  border: 0;
 }
 
 /* Размеры скроллбара */
@@ -476,6 +476,7 @@ p {
   color: #BCC0C7;
   padding-left: 22px;
   padding-top: 2px;
+  white-space: pre-line
 }
 
 
@@ -490,7 +491,7 @@ p {
   border-radius: 11px;
   width: 100%;
   height: calc(100vh - 260px);
-  
+
   padding: 24px 27px;
   box-sizing: border-box;
 }
@@ -673,7 +674,7 @@ p {
 
 .filter__item:hover {
   background-color: #F7F7FC;
-} 
+}
 
 .filter__label {
   position: relative;
@@ -770,3 +771,25 @@ p {
   color: #212226;
 }
 
+
+
+.modal-window {
+  position: absolute;
+  top: calc(50% - 247px);
+  left: calc(50% - 245px);
+  height: 495px;
+  width: 490px;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  outline: none;
+ }
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgb(127,127,127,0.5);
+  z-index: 5;
+}

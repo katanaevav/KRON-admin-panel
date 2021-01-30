@@ -35,9 +35,9 @@ class App extends PureComponent {
       case Screens.USERS_SCREEN:
         return (
           <React.Fragment>
-            <PageHeader 
+            <PageHeader
               selectedMenuItem = {Screens.USERS_SCREEN}
-              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+              onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
             <PageUsers />
           </React.Fragment>
@@ -46,9 +46,9 @@ class App extends PureComponent {
       case Screens.CITIES_SCREEN:
         return (
           <React.Fragment>
-            <PageHeader 
+            <PageHeader
               selectedMenuItem = {Screens.CITIES_SCREEN}
-              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+              onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
           </React.Fragment>
         );
@@ -56,9 +56,9 @@ class App extends PureComponent {
       case Screens.REQUESTS_SCREEN:
         return (
           <React.Fragment>
-            <PageHeader 
+            <PageHeader
               selectedMenuItem = {Screens.REQUESTS_SCREEN}
-              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+              onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
             <PageRequests />
           </React.Fragment>
@@ -67,9 +67,9 @@ class App extends PureComponent {
       default:
         return (
           <React.Fragment>
-            <PageHeader 
+            <PageHeader
               selectedMenuItem = {Screens.MAIN_SCREEN}
-              onMenuItemClick = {this._menuHeaderItemClickHandler} 
+              onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
             <PageMain />
           </React.Fragment>
