@@ -1,13 +1,18 @@
 import React, {PureComponent} from "react";
-import ReactModal from 'react-modal';
-// import BigButtonsGroup from "../big-buttons-group/big-buttons-group.jsx";
+// import ReactModal from 'react-modal';
+import MainEvent from "../main-event/main-event.jsx";
+import InfoModal from "../info-modal/info-modal.jsx";
+// import DataInfoList from "../data-info-list/data-info-list.jsx"
+import {Events} from "../../mocks/events.js"
 
 
-ReactModal.setAppElement('.user-page');
+// ReactModal.setAppElement('.user-page');
 
 class MainEvents extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.selectedEvent = [];
 
     this.state = {
       showModalInfo: false
@@ -17,29 +22,37 @@ class MainEvents extends PureComponent {
     this._closeModalWindowHandle = this._closeModalWindowHandle.bind(this);
   }
 
-  _eventIdClickHandle(evt) {
-    evt.preventDefault();
-    console.log(`click`);
+  _eventIdClickHandle(eventData) {
+    this.selectedEvent = eventData;
     this.setState({ showModalInfo: true });
   }
 
   _closeModalWindowHandle() {
+    this.selectedEvent = [];
     this.setState({ showModalInfo: false });
   }
 
-  // const {buttonsGroups} = props;
+  // eventStatus: PropTypes.string.isRequired,
+  // eventDate: PropTypes.string.isRequired,
+  // eventTime: PropTypes.string.isRequired,
+  // eventType: PropTypes.string.isRequired,
+  // eventId: PropTypes.string.isRequired,
+  // onEventIdClick: PropTypes.func,
 
-  // const groups = buttonsGroups.map((group) => (
-  //   <BigButtonsGroup
-  //     key={group.buttonsGroupName}
-  //     groupIcon={group.buttonsGroupIco}
-  //     groupName={group.buttonsGroupName}
-  //     groupHrefLinkToAll={group.buttonsGroupLinkToAll}
-  //     groupButtons={group.buttonsGroupButtons}
-  //   />
-  // ));
 
   render() {
+
+    const eventsList = Events.map((eventItem) => (
+      <MainEvent
+        key={eventItem.eventId}
+        eventStatus={eventItem.eventStatus}
+        eventDate={eventItem.eventDate}
+        eventTime={eventItem.eventTime}
+        eventType={eventItem.eventType}
+        eventId={eventItem.eventId}
+        onEventIdClick={this._eventIdClickHandle}
+      />
+    ));
 
     return (
       <React.Fragment>
@@ -62,75 +75,39 @@ class MainEvents extends PureComponent {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--purple"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">Неавторизованный пользователь</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--black"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">Водитель</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--blue"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">Авторизованный пользователь</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--green"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">Выполненная заявка</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--yellow"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">В ожиданни</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
-                  <tr className="dashboard-table__row">
-                    <td className="dashboard-table__data"><div className="state-icon state-icon--size16 state-icon--red"></div></td>
-                    <td className="dashboard-table__data">19.01.2021</td>
-                    <td className="dashboard-table__data">08:34</td>
-                    <td className="dashboard-table__data">Заявка не выполнена</td>
-                    <td className="dashboard-table__data"><a href="#" onClick={this._eventIdClickHandle}>123</a></td>
-                    <td className="dashboard-table__data"></td>
-                    <td className="dashboard-table__data"></td>
-                  </tr>
+                  {eventsList}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
-        <ReactModal
+
+        <InfoModal
+          openState = {this.state.showModalInfo}
+          title = {`Информация о событии`}
+          onCloweModalWindow = {this._closeModalWindowHandle}
+          dataList = {this.selectedEvent}
+        />
+
+        {/* <ReactModal
            isOpen={this.state.showModalInfo}
            contentLabel="Информация о событии"
            onRequestClose={this._closeModalWindowHandle}
            className="modal-window"
            overlayClassName="modal-overlay"
         >
-          <p>Modal text!</p>
-          <button onClick={this._closeModalWindowHandle}>Close Modal</button>
-        </ReactModal>
+          <div className="modal-window__data">
+            <div className="modal-window__header">
+              <p className="modal-window__title">Информация о событии</p>
+              <button className="modal-window__close-button" onClick={this._closeModalWindowHandle}>&#10006;</button>
+            </div>
+            <div className="modal-window__main">
+              <DataInfoList
+                dataInfoItems={this.selectedEvent}
+              />
+            </div>
+          </div>
+        </ReactModal> */}
       </React.Fragment>
     );
   }

@@ -476,7 +476,7 @@ p {
   color: #BCC0C7;
   padding-left: 22px;
   padding-top: 2px;
-  white-space: pre-line
+  white-space: pre-line;
 }
 
 
@@ -792,4 +792,65 @@ p {
   bottom: 0;
   background-color: rgb(127,127,127,0.5);
   z-index: 5;
+}
+
+.modal-window__header {
+  background-color: #333F50;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.modal-window__title {
+  color: #FFFFFF;
+  font-size: 10px;
+  line-height: 20px;
+  padding-left: 28px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-weight: bold;
+}
+
+.modal-window__close-button {
+  border-radius: 50%;
+  border: none;
+  background-color: #FFFFFF;
+  font-size: 8px;
+  margin: 7px;
+  height: 18px;
+  width: 18px;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+}
+
+.modal-window__main {
+  padding: 28px;
+  height: 395px;
+}
+
+.modal-window__table-wrapper {
+  height: 100%;
+  overflow: auto;
+}
+
+.modal-window__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+}
+
+.modal-window__table-row {
+  color:#212226;
+  text-align: left;
+  font-size: 10px;
+  line-height: 11px;
+}
+
+.modal-window__table-data {
+  background-color: #F7F7FC;
+  padding-top: 12px;
+  padding-bottom: 10px;
+  padding-left: 16px;
 }

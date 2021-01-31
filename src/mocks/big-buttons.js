@@ -1,9 +1,9 @@
 const getNAUsers = () => {
-  return `2`;
+  return `4`;
 }
 
 const getAuthUsers = () => {
-  return `3`;
+  return `6`;
 }
 
 const getDriverUsers = () => {
