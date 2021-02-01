@@ -1,6 +1,6 @@
 import React from "react";
 
-const SignIn = (props) => {
+const PageSignIn = (props) => {
 
   return (
     <React.Fragment>
@@ -30,4 +30,4 @@ const SignIn = (props) => {
 };
 
 
-export default SignIn;
+export default PageSignIn;

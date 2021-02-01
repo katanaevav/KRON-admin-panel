@@ -5,7 +5,7 @@ import PageHeader from "../page-header/page-header.jsx";
 import PageMain from "../page-main/page-main/page-main.jsx";
 import PageUsers from "../page-users/page-users/page-users.jsx"
 import PageRequests from "../page-requests/page-requests/page-requests.jsx"
-import SignIn from "../sign-in/sign-in.jsx"
+import PageSignIn from "../page-sign-in/page-sign-in.jsx"
 
 import {Screens} from "../../const.js"
 
@@ -85,7 +85,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/sign-in">
-            <SignIn />
+            <PageSignIn />
           </Route>
         </Switch>
       </BrowserRouter>
