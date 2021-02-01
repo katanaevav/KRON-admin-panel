@@ -1,4 +1,6 @@
 import React from "react";
+import PageRequestsHeader from "../page-requests-header/page-requests-header.jsx";
+import PageRequestsData from "../page-requests-data/page-requests-data.jsx";
 
 const PageRequests = (props) => {
 
