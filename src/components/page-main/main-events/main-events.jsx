@@ -1,9 +1,9 @@
 import React, {PureComponent} from "react";
 // import ReactModal from 'react-modal';
 import MainEvent from "../main-event/main-event.jsx";
-import InfoModal from "../info-modal/info-modal.jsx";
+import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
 // import DataInfoList from "../data-info-list/data-info-list.jsx"
-import {Events} from "../../mocks/events.js"
+import {Events} from "../../../mocks/events.js"
 
 
 // ReactModal.setAppElement('.user-page');
@@ -89,25 +89,6 @@ class MainEvents extends PureComponent {
           dataList = {this.selectedEvent}
         />
 
-        {/* <ReactModal
-           isOpen={this.state.showModalInfo}
-           contentLabel="Информация о событии"
-           onRequestClose={this._closeModalWindowHandle}
-           className="modal-window"
-           overlayClassName="modal-overlay"
-        >
-          <div className="modal-window__data">
-            <div className="modal-window__header">
-              <p className="modal-window__title">Информация о событии</p>
-              <button className="modal-window__close-button" onClick={this._closeModalWindowHandle}>&#10006;</button>
-            </div>
-            <div className="modal-window__main">
-              <DataInfoList
-                dataInfoItems={this.selectedEvent}
-              />
-            </div>
-          </div>
-        </ReactModal> */}
       </React.Fragment>
     );
   }

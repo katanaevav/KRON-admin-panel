@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 // import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header.jsx";
-import PageMain from "../page-main/page-main.jsx";
+import PageMain from "../page-main/page-main/page-main.jsx";
 import PageUsers from "../page-users/page-users.jsx"
 import PageRequests from "../page-requests/page-requests.jsx"
 import SignIn from "../sign-in/sign-in.jsx"
@@ -84,7 +84,7 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/sigin-in">
+          <Route exact path="/sign-in">
             <SignIn />
           </Route>
         </Switch>
