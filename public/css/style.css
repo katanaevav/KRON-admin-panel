@@ -817,13 +817,14 @@ p {
   border: none;
   background-color: #FFFFFF;
   font-size: 8px;
-  line-height: 15px;
+  /* line-height: 15px; */
   margin: 7px;
-  height: 18px;
-  width: 18px;
+  /* height: 18px; */
+  /* width: 18px; */
   font-weight: bold;
-  padding: 0;
+  /* padding: 0; */
   text-align: center;
+  padding: 3px 5px;
 }
 
 .modal-window__main {
