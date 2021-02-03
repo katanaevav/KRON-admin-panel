@@ -1,8 +1,33 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import RequestsTable from "../requests-table/requests-table.jsx";
 import {Requests} from "../../../mocks/requests.js";
+import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
+import {getUserKeyMapById} from "../../../selectors.js";
 
-const PageRequestsData = (props) => {
+
+class PageRequestsData extends PureComponent {
+  constructor(props) {
+    super(props);
+
+    this.selectedRequest = [];
+
+    this.state = {
+      showModalInfo: false
+    };
+
+    this._userIdClickHandle = this._userIdClickHandle.bind(this);
+    this._closeModalWindowHandle = this._closeModalWindowHandle.bind(this);
+  }
+
+  _userIdClickHandle(userId) {
+    this.selectedRequest = getUserKeyMapById(userId);
+    this.setState({ showModalInfo: true });
+  }
+
+  _closeModalWindowHandle() {
+    this.selectedRequest = [];
+    this.setState({ showModalInfo: false });
+  }
 
     // requestStatus: `state-icon--red`,
     // requestId: `1`,
@@ -19,60 +44,70 @@ const PageRequestsData = (props) => {
     // requestClientComment: `Грязный салон`,
     // requestMark: `5`,
 
-  const requestsList = Requests.map((request) => (
-    <RequestsTable
-      key={request.requestId}
-      requestStatus={request.requestStatus}
-      requestId={request.requestId}
-      requestIdPassanger={request.requestIdPassanger}
-      requestStart={request.requestStart}
-      requestDate={request.requestDate}
-      requestTime={request.requestTime}
-      requestCost={request.requestCost}
-      requestPassangersCount={request.requestPassangersCount}
-      requestIdDriver={request.requestIdDriver}
-      requestCity={request.requestCity}
-      requestGood={request.requestGood}
-      requestBad={request.requestBad}
-      requestClientComment={request.requestClientComment}
-      requestMark={request.requestMark}
-    />
-  ));
+  render() {
+    const requestsList = Requests.map((request) => (
+      <RequestsTable
+        key={request.requestId}
+        requestStatus={request.requestStatus}
+        requestId={request.requestId}
+        requestIdPassanger={request.requestIdPassanger}
+        requestStart={request.requestStart}
+        requestDate={request.requestDate}
+        requestTime={request.requestTime}
+        requestCost={request.requestCost}
+        requestPassangersCount={request.requestPassangersCount}
+        requestIdDriver={request.requestIdDriver}
+        requestCity={request.requestCity}
+        requestGood={request.requestGood}
+        requestBad={request.requestBad}
+        requestClientComment={request.requestClientComment}
+        requestMark={request.requestMark}
+        onUserIdClick={this._userIdClickHandle}
+      />
+    ));
 
-  return (
-    <React.Fragment>
 
-      <div className="table-data__table">
-        <table className="dashboard-table dashboard-table--dark-row">
-          <thead>
-            <tr className="dashboard-table__header events-table">
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Статус</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID заявки</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID пассажира</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Начало</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Дата</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Время</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Сумма</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Попутчиков</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID водителя</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Город</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Хорошо выдачи</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Плохо</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Комментарий клиента</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Оценка</th>
-              <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll"></th>
-            </tr>
-          </thead>
-          <tbody>
+    return (
+      <React.Fragment>
 
-            {requestsList}
+        <div className="table-data__table">
+          <table className="dashboard-table dashboard-table--dark-row">
+            <thead>
+              <tr className="dashboard-table__header events-table">
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Статус</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID заявки</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID пассажира</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Начало</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Дата</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Время</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Сумма</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Попутчиков</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">ID водителя</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Город</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Хорошо выдачи</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Плохо</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Комментарий клиента</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll">Оценка</th>
+                <th className="dashboard-table__head-data dashboard-table__head-data--no-scroll"></th>
+              </tr>
+            </thead>
+            <tbody>
 
-          </tbody>
-        </table>
-      </div>
+              {requestsList}
 
-    </React.Fragment>
-  );
+            </tbody>
+          </table>
+        </div>
+
+        <InfoModal
+          openState = {this.state.showModalInfo}
+          title = {`Информация о пользователе`}
+          onCloweModalWindow = {this._closeModalWindowHandle}
+          dataList = {this.selectedRequest}
+        />
+      </React.Fragment>
+    );
+  }
 };
 
 
