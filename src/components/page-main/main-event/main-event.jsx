@@ -11,38 +11,9 @@ class MainEvent extends PureComponent {
 
   _eventIdClickHandle(evt) {
     evt.preventDefault();
-    const {eventStatus, eventDate, eventTime, eventType, eventId, onEventIdClick} = this.props;
-    const eventData = [
-      // {
-      //   key: `Статус`,
-      //   value: eventStatus,
-      // },
-      {
-        key: `ID события`,
-        value: eventId,
-      },
-      {
-        key: `Тип события`,
-        value: eventType,
-      },
-      {
-        key: `Дата события`,
-        value: eventDate,
-      },
-      {
-        key: `Время события`,
-        value: eventTime,
-      },
-    ];
 
-    // {
-    //   "Статус": eventStatus,
-    //   "Дата": eventDate,
-    //   "Время": eventTime,
-    //   "Тип события": eventType,
-    //   "ID события": eventId,
-    // };
-    onEventIdClick(eventData);
+    const {eventId, onEventIdClick} = this.props;
+    onEventIdClick(eventId);
   }
 
   // eventStatus: `state-icon--purple`,
