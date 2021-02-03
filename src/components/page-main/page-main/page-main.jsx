@@ -2,7 +2,7 @@ import React from "react";
 import BigButtonsGroups from "../big-buttons-groups/big-buttons-groups.jsx";
 import MainEvents from "../main-events/main-events.jsx";
 
-import {MainButtonsGroups} from "../../../mocks/big-buttons.js";
+import {MainButtonsGroups} from "../../../const.js";
 
 
 const PageMain = (props) => {
