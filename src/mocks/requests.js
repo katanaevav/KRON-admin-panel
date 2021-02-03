@@ -1,4 +1,4 @@
-export const Users = [
+export const Requests = [
   {
     requestStatus: `state-icon--red`,
     requestId: `1`,
