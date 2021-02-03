@@ -1,7 +1,7 @@
 export const Users = [
   {
     userStatus: `state-icon--black`,
-    userId: `4`,
+    userId: `1`,
     userFIO: `Иванов Иван`,
     userPhone: `+79207388549`,
     userEmail: `ivan.ivanov@yandex.ru`,
@@ -19,7 +19,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userId: `5`,
+    userId: `2`,
     userFIO: `Пирогов Евгений`,
     userPhone: `+79255579632`,
     userEmail: `epirogov@mail.ru`,
@@ -37,7 +37,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userId: `6`,
+    userId: `3`,
     userFIO: `Егоров Аркадий`,
     userPhone: `+79266587311`,
     userEmail: `ae1983@mail.ru`,
@@ -55,7 +55,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--purple`,
-    userId: `7`,
+    userId: `4`,
     userFIO: `Котов Роман`,
     userPhone: `+79271121312`,
     userEmail: `roman-volk@google.com`,
@@ -73,7 +73,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--purple`,
-    userId: `8`,
+    userId: `5`,
     userFIO: `Кормухин Егор`,
     userPhone: `+79272585647`,
     userEmail: `kegor@google.com`,
@@ -91,7 +91,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--purple`,
-    userId: `9`,
+    userId: `6`,
     userFIO: `Расторопов Вячеслав`,
     userPhone: `+79616985412`,
     userEmail: `rasv80@google.com`,
