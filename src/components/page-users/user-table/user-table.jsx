@@ -1,6 +1,9 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 import UserMenuButton from "../user-menu-button/user-menu-button.jsx";
+import withDropDownMenuButton from "../../../hoc/with-drop-down-menu-button/with-drop-down-menu-button.js"
+
+const UserMenuButtonWrapper = withDropDownMenuButton(UserMenuButton);
 
 class UserTable extends PureComponent {
 
@@ -33,7 +36,7 @@ class UserTable extends PureComponent {
           <td className="dashboard-table__data">{userCarRegSert}</td>
           <td className="dashboard-table__data">{userInsPoliсy}</td>
           <td className="dashboard-table__data dashboard-table__data--with-button">
-            <UserMenuButton
+            <UserMenuButtonWrapper
               userId = {userId}
             />
           </td>
