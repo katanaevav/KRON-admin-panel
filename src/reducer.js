@@ -9,11 +9,13 @@ const initialState = {
   RequestsList: Requests,
 
   currentUsersStatusFilter: ``,
+  currentRequestsStatusFilter: ``,
 };
 
 
 const ActionType = {
   SET_USERS_STATUS_FILTER: `SET_USERS_STATUS_FILTER`,
+  SET_REQUESTS_STATUS_FILTER: `SET_REQUESTS_STATUS_FILTER`,
 };
 
 
@@ -21,6 +23,13 @@ const ActionCreator = {
   setUsersStatusFilter: (filterName) => {
     return {
       type: ActionType.SET_USERS_STATUS_FILTER,
+      payload: filterName,
+    };
+  },
+
+  setRequestsStatusFilter: (filterName) => {
+    return {
+      type: ActionType.SET_REQUESTS_STATUS_FILTER,
       payload: filterName,
     };
   },
@@ -32,6 +41,11 @@ const reducer = (state = initialState, action) => {
     case ActionType.SET_USERS_STATUS_FILTER:
       return Object.assign({}, state, {
         currentUsersStatusFilter: action.payload,
+      });
+
+    case ActionType.SET_REQUESTS_STATUS_FILTER:
+      return Object.assign({}, state, {
+        currentRequestsStatusFilter: action.payload,
       });
   }
 
