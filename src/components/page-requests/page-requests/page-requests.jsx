@@ -1,8 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PageRequestsHeader from "../page-requests-header/page-requests-header.jsx";
 import PageRequestsData from "../page-requests-data/page-requests-data.jsx";
 
 const PageRequests = (props) => {
+
+  const {RequestsList} = props;
 
   return (
     <React.Fragment>
@@ -12,7 +15,9 @@ const PageRequests = (props) => {
           <div className="table-data">
 
             <PageRequestsHeader />
-            <PageRequestsData />
+            <PageRequestsData
+              RequestsList = {RequestsList}
+            />
 
           </div>
 
@@ -20,6 +25,11 @@ const PageRequests = (props) => {
       </main>
     </React.Fragment>
   );
+};
+
+
+PageRequests.propTypes = {
+  RequestsList: PropTypes.array.isRequired,
 };
 
 

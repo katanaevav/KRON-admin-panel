@@ -1,6 +1,6 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import RequestsTable from "../requests-table/requests-table.jsx";
-import {Requests} from "../../../mocks/requests.js";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
 import {getUserKeyMapById} from "../../../selectors.js";
 
@@ -45,7 +45,9 @@ class PageRequestsData extends PureComponent {
     // requestMark: `5`,
 
   render() {
-    const requestsList = Requests.map((request) => (
+    const {RequestsList} = this.props;
+
+    const requests = RequestsList.map((request) => (
       <RequestsTable
         key={request.requestId}
         requestStatus={request.requestStatus}
@@ -93,7 +95,7 @@ class PageRequestsData extends PureComponent {
             </thead>
             <tbody>
 
-              {requestsList}
+              {requests}
 
             </tbody>
           </table>
@@ -108,6 +110,11 @@ class PageRequestsData extends PureComponent {
       </React.Fragment>
     );
   }
+};
+
+
+PageRequestsData.propTypes = {
+  RequestsList: PropTypes.array.isRequired,
 };
 
 
