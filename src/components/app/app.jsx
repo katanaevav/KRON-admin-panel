@@ -1,11 +1,14 @@
 import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import PageHeader from "../page-header/page-header.jsx";
 import PageMain from "../page-main/page-main/page-main.jsx";
 import PageUsers from "../page-users/page-users/page-users.jsx"
 import PageRequests from "../page-requests/page-requests/page-requests.jsx"
 import PageSignIn from "../page-sign-in/page-sign-in.jsx"
+
+import {connect} from "react-redux";
+import {ActionCreator} from "../../reducer.js";
 
 import {Screens} from "../../const.js"
 
@@ -30,6 +33,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {currentPage} = this.state;
+    const {EventsList} = this.props;
 
     switch (currentPage) {
       case Screens.USERS_SCREEN:
@@ -71,7 +75,9 @@ class App extends PureComponent {
               selectedMenuItem = {Screens.MAIN_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
-            <PageMain />
+            <PageMain
+              EventsList = {EventsList}
+            />
           </React.Fragment>
         );
     }
@@ -95,4 +101,31 @@ class App extends PureComponent {
 };
 
 
-export default App;
+App.propTypes = {
+  EventsList: PropTypes.array.isRequired,
+  UsersList: PropTypes.array.isRequired,
+  RequestsList: PropTypes.array.isRequired,
+
+  currentUsersStatusFilter: PropTypes.string.isRequired,
+
+  onUserStatusFilterClick: PropTypes.func.isRequired,
+};
+
+
+const mapStateToProps = (state) => ({
+  EventsList: state.EventsList,
+  UsersList: state.UsersList,
+  RequestsList: state.RequestsList,
+
+  currentUsersStatusFilter: state.currentUsersStatusFilter,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onUserStatusFilterClick(filterName) {
+    dispatch(ActionCreator.setUsersStatusFilter(filterName));
+  },
+});
+
+
+export {App};
+export default connect(mapStateToProps, mapDispatchToProps)(App);

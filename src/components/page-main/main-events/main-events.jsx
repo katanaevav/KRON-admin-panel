@@ -3,8 +3,6 @@ import MainEvent from "../main-event/main-event.jsx";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
 import {getEventKeyMapById} from "../../../selectors.js";
 
-import {Events} from "../../../mocks/events.js";
-
 
 class MainEvents extends PureComponent {
   constructor(props) {
@@ -40,7 +38,9 @@ class MainEvents extends PureComponent {
 
   render() {
 
-    const eventsList = Events.map((eventItem) => (
+    const {EventsList} = this.props;
+
+    const eventsList = EventsList.map((eventItem) => (
       <MainEvent
         key={eventItem.eventId}
         eventStatus={eventItem.eventStatus}

@@ -7,6 +7,8 @@ import {MainButtonsGroups} from "../../../const.js";
 
 const PageMain = (props) => {
 
+  const {EventsList} = props;
+
   return (
     <React.Fragment>
       <main className="user-page__main">
@@ -17,7 +19,9 @@ const PageMain = (props) => {
               buttonsGroups = {MainButtonsGroups}
             />
 
-            <MainEvents />
+            <MainEvents
+              EventsList = {EventsList}
+            />
 
           </div>
         </div>
