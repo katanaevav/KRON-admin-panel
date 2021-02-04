@@ -1,8 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import PageUsersHeader from "../page-users-header/page-users-header.jsx"
 import PageUsersData from "../page-users-data/page-users-data.jsx"
 
 const PageUsers = (props) => {
+
+  const {UsersList} = props;
 
   return (
     <React.Fragment>
@@ -12,7 +15,9 @@ const PageUsers = (props) => {
           <div className="table-data">
 
             <PageUsersHeader />
-            <PageUsersData />
+            <PageUsersData
+              UsersList = {UsersList}
+            />
 
           </div>
 
@@ -20,6 +25,11 @@ const PageUsers = (props) => {
       </main>
     </React.Fragment>
   );
+};
+
+
+PageUsers.propTypes = {
+  UsersList: PropTypes.array.isRequired,
 };
 
 

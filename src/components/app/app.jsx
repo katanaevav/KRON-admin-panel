@@ -33,7 +33,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {currentPage} = this.state;
-    const {EventsList} = this.props;
+    const {EventsList, UsersList} = this.props;
 
     switch (currentPage) {
       case Screens.USERS_SCREEN:
@@ -43,7 +43,9 @@ class App extends PureComponent {
               selectedMenuItem = {Screens.USERS_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
             />
-            <PageUsers />
+            <PageUsers
+              UsersList = {UsersList}
+            />
           </React.Fragment>
         );
 

@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 import UserTable from "../user-table/user-table.jsx"
-import {Users} from "../../../mocks/users.js"
 
 const PageUsersData = (props) => {
 
@@ -21,7 +21,9 @@ const PageUsersData = (props) => {
   // userCarRegSert: `XXXX 000248`,
   // userInsPoliсy: `XXX 056354359`,
 
-  const usersList = Users.map((user) => (
+  const {UsersList} = props;
+
+  const users = UsersList.map((user) => (
     <UserTable
       key={user.userId}
       userStatus={user.userStatus}
@@ -69,12 +71,17 @@ const PageUsersData = (props) => {
             </tr>
           </thead>
           <tbody>
-            {usersList}
+            {users}
           </tbody>
         </table>
       </div>
     </React.Fragment>
   );
+};
+
+
+PageUsersData.propTypes = {
+  UsersList: PropTypes.array.isRequired,
 };
 
 
