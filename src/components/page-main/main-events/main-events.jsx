@@ -1,13 +1,10 @@
 import React, {PureComponent} from "react";
-// import ReactModal from 'react-modal';
 import MainEvent from "../main-event/main-event.jsx";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
-// import DataInfoList from "../data-info-list/data-info-list.jsx";
-import {Events} from "../../../mocks/events.js";
 import {getEventKeyMapById} from "../../../selectors.js";
 
+import {Events} from "../../../mocks/events.js";
 
-// ReactModal.setAppElement('.user-page');
 
 class MainEvents extends PureComponent {
   constructor(props) {
