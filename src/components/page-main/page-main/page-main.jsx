@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BigButtonsGroups from "../big-buttons-groups/big-buttons-groups.jsx";
 import MainEvents from "../main-events/main-events.jsx";
 
@@ -28,6 +29,11 @@ const PageMain = (props) => {
       </main>
     </React.Fragment>
   );
+};
+
+
+PageMain.propTypes = {
+  EventsList: PropTypes.array.isRequired,
 };
 
 

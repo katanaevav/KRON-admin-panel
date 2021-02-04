@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import PropTypes from "prop-types";
 import MainEvent from "../main-event/main-event.jsx";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
 import {getEventKeyMapById} from "../../../selectors.js";
@@ -90,6 +91,11 @@ class MainEvents extends PureComponent {
       </React.Fragment>
     );
   }
+};
+
+
+MainEvents.propTypes = {
+  EventsList: PropTypes.array.isRequired,
 };
 
 
