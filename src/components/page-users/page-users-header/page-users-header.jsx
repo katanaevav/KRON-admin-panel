@@ -1,9 +1,9 @@
 import React, {PureComponent}  from "react";
 import PropTypes from "prop-types";
-import UserStatusFilter from "../users-status-filter/users-status-filter.jsx";
+import UsersStatusFilter from "../users-status-filter/users-status-filter.jsx";
 import withDropDownMenuButton from "../../../hoc/with-drop-down-menu-button/with-drop-down-menu-button.js"
 
-const UserStatusFilterWrapper = withDropDownMenuButton(UserStatusFilter);
+const UsersStatusFilterWrapper = withDropDownMenuButton(UsersStatusFilter);
 
 
 class PageUsersHeader extends PureComponent {
@@ -22,7 +22,7 @@ class PageUsersHeader extends PureComponent {
       <React.Fragment>
         <div className="table-data__header">
 
-          <UserStatusFilterWrapper
+          <UsersStatusFilterWrapper
             onFilterStatusItemButtonClick = {this._onFilterStatusItemButtonClick}
           />
 
@@ -50,7 +50,7 @@ class PageUsersHeader extends PureComponent {
 };
 
 
-UserStatusFilter.propTypes = {
+PageUsersHeader.propTypes = {
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
 };
 

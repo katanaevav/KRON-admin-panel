@@ -1,6 +1,9 @@
 const getLocalFilteredUsers = (users, filter) => {
-  console.log(filter);
   return filter === `` ? users : users.slice().filter((user) => user.userStatus === filter);
 };
 
-export {getLocalFilteredUsers};
+const getLocalFilteredRequests = (requests, filter) => {
+  return filter === `` ? requests : requests.slice().filter((request) => request.requestStatus === filter);
+};
+
+export {getLocalFilteredUsers, getLocalFilteredRequests};

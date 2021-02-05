@@ -1,7 +1,8 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
 
-class UsersStatusFilter extends PureComponent {
+
+class RequestsStatusFilter extends PureComponent {
 
   constructor(props) {
     super(props);
@@ -49,15 +50,15 @@ class UsersStatusFilter extends PureComponent {
               ref={this.dropdownMenu}
             >
               <div className="filter__item">
-                <button className="filter__label filter__label--purple" data-filter="state-icon--purple" htmlFor="filter-1" onClick={this._filterItemButtonClick}>Неавторизованные</button>
+                <button className="filter__label filter__label--yellow" data-filter="state-icon--yellow" htmlFor="filter-1" onClick={this._filterItemButtonClick}>В ожидании</button>
               </div>
 
               <div className="filter__item">
-                <button className="filter__label filter__label--blue" data-filter="state-icon--blue" htmlFor="filter-2" onClick={this._filterItemButtonClick}>Авторизованные</button>
+                <button className="filter__label filter__label--green" data-filter="state-icon--green" htmlFor="filter-2" onClick={this._filterItemButtonClick}>Авторизованные</button>
               </div>
 
               <div className="filter__item">
-                <button className="filter__label filter__label--black" data-filter="state-icon--black" htmlFor="filter-3" onClick={this._filterItemButtonClick}>Водители</button>
+                <button className="filter__label filter__label--red" data-filter="state-icon--red" htmlFor="filter-3" onClick={this._filterItemButtonClick}>Водители</button>
               </div>
 
               <div>
@@ -77,12 +78,12 @@ class UsersStatusFilter extends PureComponent {
 };
 
 
-UsersStatusFilter.propTypes = {
+RequestsStatusFilter.propTypes = {
   showMenu: PropTypes.bool.isRequired,
   onOpenMenu: PropTypes.func.isRequired,
   onHideMenu: PropTypes.func.isRequired,
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
 };
 
-export default UsersStatusFilter;
+export default RequestsStatusFilter;
 

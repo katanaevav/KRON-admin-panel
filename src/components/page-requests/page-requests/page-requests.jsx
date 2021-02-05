@@ -1,35 +1,50 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import PageRequestsHeader from "../page-requests-header/page-requests-header.jsx";
 import PageRequestsData from "../page-requests-data/page-requests-data.jsx";
 
-const PageRequests = (props) => {
 
-  const {RequestsList} = props;
+class PageRequests extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <React.Fragment>
-      <main className="user-page__main">
-        <div className="page-main">
+    this._onFilterStatusItemButtonClick = this._onFilterStatusItemButtonClick.bind(this);
+  }
 
-          <div className="table-data">
+  _onFilterStatusItemButtonClick(statusFilter) {
+    this.props.onFilterStatusItemButtonClick(statusFilter);
+  }
 
-            <PageRequestsHeader />
-            <PageRequestsData
-              RequestsList = {RequestsList}
-            />
+  render() {
+    const {RequestsList} = this.props;
+
+    return (
+      <React.Fragment>
+        <main className="user-page__main">
+          <div className="page-main">
+
+            <div className="table-data">
+
+              <PageRequestsHeader
+                onFilterStatusItemButtonClick = {this._onFilterStatusItemButtonClick}
+              />
+              <PageRequestsData
+                RequestsList = {RequestsList}
+              />
+
+            </div>
 
           </div>
-
-        </div>
-      </main>
-    </React.Fragment>
-  );
+        </main>
+      </React.Fragment>
+    );
+  }
 };
 
 
 PageRequests.propTypes = {
   RequestsList: PropTypes.array.isRequired,
+  onFilterStatusItemButtonClick: PropTypes.func.isRequired,
 };
 
 
