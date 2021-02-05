@@ -1,6 +1,6 @@
-import {Events} from "./mocks/events.js";
-import {Requests} from "./mocks/requests.js";
-import {Users} from "./mocks/users.js";
+import {Events} from "../mocks/events.js";
+import {Requests} from "../mocks/requests.js";
+import {Users} from "../mocks/users.js";
 
 
 const initialState = {

@@ -1,35 +1,51 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import PageUsersHeader from "../page-users-header/page-users-header.jsx"
 import PageUsersData from "../page-users-data/page-users-data.jsx"
 
-const PageUsers = (props) => {
 
-  const {UsersList} = props;
+class PageUsers extends PureComponent {
+  constructor(props) {
+    super(props);
 
-  return (
-    <React.Fragment>
-      <main className="user-page__main">
-        <div className="page-main">
+    this._onFilterStatusItemButtonClick = this._onFilterStatusItemButtonClick.bind(this);
+  }
 
-          <div className="table-data">
+  _onFilterStatusItemButtonClick(statusFilter) {
+    this.props.onFilterStatusItemButtonClick(statusFilter);
+  }
 
-            <PageUsersHeader />
-            <PageUsersData
-              UsersList = {UsersList}
-            />
+  render() {
+
+    const {UsersList} = this.props;
+
+    return (
+      <React.Fragment>
+        <main className="user-page__main">
+          <div className="page-main">
+
+            <div className="table-data">
+
+              <PageUsersHeader
+                onFilterStatusItemButtonClick = {this._onFilterStatusItemButtonClick}
+              />
+              <PageUsersData
+                UsersList = {UsersList}
+              />
+
+            </div>
 
           </div>
-
-        </div>
-      </main>
-    </React.Fragment>
-  );
+        </main>
+      </React.Fragment>
+    );
+  }
 };
 
 
 PageUsers.propTypes = {
   UsersList: PropTypes.array.isRequired,
+  onFilterStatusItemButtonClick: PropTypes.func.isRequired,
 };
 
 

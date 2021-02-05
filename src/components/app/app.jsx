@@ -8,7 +8,8 @@ import PageRequests from "../page-requests/page-requests/page-requests.jsx"
 import PageSignIn from "../page-sign-in/page-sign-in.jsx"
 
 import {connect} from "react-redux";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/reducer.js";
+import {getLocalFilteredUsers} from "../../reducer/selectors.js";
 
 import {Screens} from "../../const.js"
 
@@ -21,7 +22,7 @@ class App extends PureComponent {
     this._menuHeaderItemClickHandler = this._menuHeaderItemClickHandler.bind(this);
 
     this.state = {
-      currentPage: Screens.MAIN_SCREEN,
+      currentPage: Screens.USERS_SCREEN,
     };
   }
 
@@ -34,6 +35,7 @@ class App extends PureComponent {
   _renderApp() {
     const {currentPage} = this.state;
     const {EventsList, UsersList, RequestsList} = this.props;
+    const {onUserStatusFilterClick} = this.props;
 
     switch (currentPage) {
       case Screens.USERS_SCREEN:
@@ -45,6 +47,7 @@ class App extends PureComponent {
             />
             <PageUsers
               UsersList = {UsersList}
+              onFilterStatusItemButtonClick = {onUserStatusFilterClick}
             />
           </React.Fragment>
         );
@@ -118,7 +121,7 @@ App.propTypes = {
 
 const mapStateToProps = (state) => ({
   EventsList: state.EventsList,
-  UsersList: state.UsersList,
+  UsersList: getLocalFilteredUsers(state.UsersList, state.currentUsersStatusFilter),
   RequestsList: state.RequestsList,
 
   currentUsersStatusFilter: state.currentUsersStatusFilter,

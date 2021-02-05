@@ -668,23 +668,37 @@ p {
   border-radius: 4px;
 }
 
-.filter__toggle:checked + .filter__list {
+/* .filter__toggle:checked + .filter__list {
+  display: block;
+} */
+
+.filter__list--show {
   display: block;
 }
+
 
 .filter__item:hover {
   background-color: #F7F7FC;
 }
 
 .filter__label {
+  font-family: "Gotham Pro", "Arial", sans-serif;
+  font-size: 8px;
+  line-height: 11px;
+  text-align: left;
+  border: none;
+  background: none;
+  width: 100%;
   position: relative;
   display: block;
-  padding-left: 23px;
+  padding-left: 25px;
   padding-top: 7px;
   padding-bottom: 9px;
+  padding-right: auto;
   font-size: 7px;
   line-height: 7px;
   color: #212226;
+  cursor: pointer;
 }
 
 .filter__label::before {
