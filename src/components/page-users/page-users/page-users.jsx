@@ -17,7 +17,7 @@ class PageUsers extends PureComponent {
 
   render() {
 
-    const {UsersList} = this.props;
+    const {UsersList, passangersCount, driversCount, usersCount} = this.props;
 
     return (
       <React.Fragment>
@@ -28,6 +28,9 @@ class PageUsers extends PureComponent {
 
               <PageUsersHeader
                 onFilterStatusItemButtonClick = {this._onFilterStatusItemButtonClick}
+                passangersCount = {passangersCount}
+                driversCount = {driversCount}
+                usersCount = {usersCount}
               />
               <PageUsersData
                 UsersList = {UsersList}
@@ -46,6 +49,9 @@ class PageUsers extends PureComponent {
 PageUsers.propTypes = {
   UsersList: PropTypes.array.isRequired,
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
+  passangersCount: PropTypes.number,
+  driversCount: PropTypes.number,
+  usersCount: PropTypes.number,
 };
 
 

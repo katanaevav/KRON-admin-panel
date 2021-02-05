@@ -17,6 +17,8 @@ class PageRequestsHeader extends PureComponent {
   }
 
   render() {
+    const {requestsCount, requestsAvgMark} = this.props;
+
     return (
       <React.Fragment>
 
@@ -30,11 +32,11 @@ class PageRequestsHeader extends PureComponent {
             <ul className="counters__list">
               <li className="counters__item counters__item--drivers">
                 <p className="counters__name">Всего заявок</p>
-                <p className="counters__value">4</p>
+                <p className="counters__value">{requestsCount}</p>
               </li>
               <li className="counters__item counters__item--summary">
                 <p className="counters__name">Средняя оценка</p>
-                <p className="counters__value">5</p>
+                <p className="counters__value">{requestsAvgMark}</p>
               </li>
             </ul>
 
@@ -49,6 +51,8 @@ class PageRequestsHeader extends PureComponent {
 
 PageRequestsHeader.propTypes = {
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
+  requestsCount: PropTypes.number,
+  requestsAvgMark: PropTypes.number,
 };
 
 

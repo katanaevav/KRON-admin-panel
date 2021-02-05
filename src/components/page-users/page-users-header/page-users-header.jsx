@@ -18,6 +18,8 @@ class PageUsersHeader extends PureComponent {
   }
 
   render() {
+    const {passangersCount, driversCount, usersCount} = this.props;
+
     return (
       <React.Fragment>
         <div className="table-data__header">
@@ -30,15 +32,15 @@ class PageUsersHeader extends PureComponent {
             <ul className="counters__list">
               <li className="counters__item counters__item--passangers">
                 <p className="counters__name">Пассажиров</p>
-                <p className="counters__value">1</p>
+                <p className="counters__value">{passangersCount}</p>
               </li>
               <li className="counters__item counters__item--drivers">
                 <p className="counters__name">Водителей</p>
-                <p className="counters__value">1</p>
+                <p className="counters__value">{driversCount}</p>
               </li>
               <li className="counters__item counters__item--summary">
                 <p className="counters__name">Всего пользователей</p>
-                <p className="counters__value">4</p>
+                <p className="counters__value">{usersCount}</p>
               </li>
             </ul>
 
@@ -52,6 +54,9 @@ class PageUsersHeader extends PureComponent {
 
 PageUsersHeader.propTypes = {
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
+  passangersCount: PropTypes.number,
+  driversCount: PropTypes.number,
+  usersCount: PropTypes.number,
 };
 
 

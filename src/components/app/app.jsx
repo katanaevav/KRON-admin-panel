@@ -22,7 +22,7 @@ class App extends PureComponent {
     this._menuHeaderItemClickHandler = this._menuHeaderItemClickHandler.bind(this);
 
     this.state = {
-      currentPage: Screens.USERS_SCREEN,
+      currentPage: Screens.MAIN_SCREEN,
     };
   }
 
@@ -36,6 +36,8 @@ class App extends PureComponent {
     const {currentPage} = this.state;
     const {EventsList, UsersList, RequestsList} = this.props;
     const {onUserStatusFilterClick, onRequestsStatusFilterClick} = this.props;
+    const {passangersCount, driversCount, usersCount} = this.props;
+    const {requestsCount, requestsAvgMark} = this.props;
 
     switch (currentPage) {
       case Screens.USERS_SCREEN:
@@ -48,6 +50,9 @@ class App extends PureComponent {
             <PageUsers
               UsersList = {UsersList}
               onFilterStatusItemButtonClick = {onUserStatusFilterClick}
+              passangersCount = {passangersCount}
+              driversCount = {driversCount}
+              usersCount = {usersCount}
             />
           </React.Fragment>
         );
@@ -72,6 +77,8 @@ class App extends PureComponent {
             <PageRequests
               RequestsList = {RequestsList}
               onFilterStatusItemButtonClick = {onRequestsStatusFilterClick}
+              requestsCount = {requestsCount}
+              requestsAvgMark = {requestsAvgMark}
             />
           </React.Fragment>
         );
@@ -114,6 +121,14 @@ App.propTypes = {
   UsersList: PropTypes.array.isRequired,
   RequestsList: PropTypes.array.isRequired,
 
+  passangersCount: PropTypes.number,
+  driversCount: PropTypes.number,
+  usersCount: PropTypes.number,
+  notAuthorizedUsersCount: PropTypes.number,
+
+  requestsCount: PropTypes.number,
+  requestsAvgMark: PropTypes.number,
+
   currentUsersStatusFilter: PropTypes.string.isRequired,
 
   onUserStatusFilterClick: PropTypes.func.isRequired,
@@ -124,6 +139,14 @@ const mapStateToProps = (state) => ({
   EventsList: state.EventsList,
   UsersList: getLocalFilteredUsers(state.UsersList, state.currentUsersStatusFilter),
   RequestsList: getLocalFilteredRequests(state.RequestsList, state.currentRequestsStatusFilter),
+
+  passangersCount: state.passangersCount,
+  driversCount: state.driversCount,
+  usersCount: state.usersCount,
+  notAuthorizedUsersCount: state.notAuthorizedUsersCount,
+
+  requestsCount: state.requestsCount,
+  requestsAvgMark: state.requestsAvgMark,
 
   currentUsersStatusFilter: state.currentUsersStatusFilter,
   currentRequestsStatusFilter: state.currentRequestsStatusFilter,

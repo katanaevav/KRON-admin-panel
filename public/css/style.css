@@ -681,9 +681,16 @@ p {
   background-color: #F7F7FC;
 }
 
+.filter__button {
+  font-family : inherit;
+  font-size: 1em;
+}
+
 .filter__label {
-  font-family: "Gotham Pro", "Arial", sans-serif;
-  font-size: 8px;
+  /* font-family: "Gotham Pro", "Arial", sans-serif;
+  font-size: 8px; */
+  font-family : inherit;
+  font-size: 1em;
   line-height: 11px;
   text-align: left;
   border: none;

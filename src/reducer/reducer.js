@@ -2,11 +2,39 @@ import {Events} from "../mocks/events.js";
 import {Requests} from "../mocks/requests.js";
 import {Users} from "../mocks/users.js";
 
+const getPassangersCount = (users) => {
+  return users.slice().filter((user) => user.userCar === `` && user.userAuthorized).length;
+};
+
+const getDriversCount = (users) => {
+  return users.slice().filter((user) => user.userCar !== `` && user.userAuthorized).length;
+};
+
+const getNotAuthorizedUsersCount = (users) => {
+  return users.slice().filter((user) => !user.userAuthorized).length;
+}
+
+const getRequestsAvgMark = (requests) => {
+  const req = requests.slice().filter((request) => request.requestMark !== ``);
+
+  return req.reduce(function (accumulator, currentValue) {
+    return accumulator + (Number.parseInt(currentValue.requestMark, 10) ? Number.parseInt(currentValue.requestMark, 10) : 0);
+  }, 0) / req.length;
+};
+
 
 const initialState = {
   EventsList: Events,
   UsersList: Users,
   RequestsList: Requests,
+
+  passangersCount: getPassangersCount(Users),
+  driversCount: getDriversCount(Users),
+  usersCount: Users.length,
+  notAuthorizedUsersCount: getNotAuthorizedUsersCount(Users),
+
+  requestsCount: Requests.length,
+  requestsAvgMark: getRequestsAvgMark(Requests),
 
   currentUsersStatusFilter: ``,
   currentRequestsStatusFilter: ``,
