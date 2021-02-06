@@ -17,21 +17,21 @@ class UserMenuButton extends PureComponent {
   _autorizeUserClick(evt) {
     evt.preventDefault();
     const userId = evt.target.dataset.userid;
-    console.log(`Авторизовать пользователя ${userId}`);
+    alert(`Авторизовать пользователя ${userId}`);
     this.props.onHideMenu();
   }
 
   _hystoryClick(evt) {
     evt.preventDefault();
     const userId = evt.target.dataset.userid;
-    console.log(`История поездок пользователя ${userId}`);
+    alert(`История поездок пользователя ${userId}`);
     this.props.onHideMenu();
   }
 
   _deleteUserClick(evt) {
     evt.preventDefault();
     const userId = evt.target.dataset.userid;
-    console.log(`Удалить пользователя ${userId}`);
+    alert(`Удалить пользователя ${userId}`);
     this.props.onHideMenu();
   }
 

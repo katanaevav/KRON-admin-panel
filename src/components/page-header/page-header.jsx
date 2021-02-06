@@ -1,5 +1,11 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
+import PageHeaderUserButton from "../page-header-user-button/page-header-user-button.jsx";
+import withDropDownMenuButton from "../../hoc/with-drop-down-menu-button/with-drop-down-menu-button.js";
+
+
+const PageHeaderUserButtonWrapper = withDropDownMenuButton(PageHeaderUserButton);
+
 
 import {Screens} from "../../const.js"
 
@@ -8,11 +14,16 @@ class PageHeader extends PureComponent {
     super(props);
 
     this._menuItemClickHandler = this._menuItemClickHandler.bind(this);
+    this._logOutClickHandler = this._logOutClickHandler.bind(this);
   }
 
   _menuItemClickHandler(evt) {
     evt.preventDefault();
     this.props.onMenuItemClick(evt.currentTarget.parentElement.dataset.key);
+  }
+
+  _logOutClickHandler() {
+    this.props.onLogOutButtonClick();
   }
 
   render() {
@@ -26,7 +37,7 @@ class PageHeader extends PureComponent {
               <nav className="page-header__nav nav">
                 <ul className="nav__menu">
                   <li className={`page-header__item nav__item ${selectedMenuItem === Screens.MAIN_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.MAIN_SCREEN}>
-                    <a 
+                    <a
                       href="#"
                       onClick={this._menuItemClickHandler}
                     >
@@ -44,7 +55,7 @@ class PageHeader extends PureComponent {
                     </a>
                   </li>
                   <li className={`page-header__item nav__item ${selectedMenuItem === Screens.USERS_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.USERS_SCREEN}>
-                    <a 
+                    <a
                       href="#"
                       onClick={this._menuItemClickHandler}
                     >
@@ -55,7 +66,7 @@ class PageHeader extends PureComponent {
                     </a>
                   </li>
                   <li className={`page-header__item nav__item ${selectedMenuItem === Screens.REQUESTS_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.REQUESTS_SCREEN}>
-                    <a 
+                    <a
                       href="#"
                       onClick={this._menuItemClickHandler}
                     >
@@ -70,8 +81,8 @@ class PageHeader extends PureComponent {
                       Заявки
                     </a>
                   </li>
-                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.CITIES_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.CITIES_SCREEN}>             
-                    <a 
+                  <li className={`page-header__item nav__item ${selectedMenuItem === Screens.CITIES_SCREEN ? `page-header__item--selected` : ``}`} data-key={Screens.CITIES_SCREEN}>
+                    <a
                       href="#"
                       onClick={this._menuItemClickHandler}
                     >
@@ -81,7 +92,7 @@ class PageHeader extends PureComponent {
                             <path d="M8.655,2.629H9.739a.273.273,0,0,0,.273-.273V1.273A.273.273,0,0,0,9.739,1H8.655a.273.273,0,0,0-.273.273v.208h-1.1a.812.812,0,0,0-.811.811v2.65H4.986V.753A.478.478,0,0,0,4.508.275H.478A.478.478,0,0,0,0,.753V9.8a.478.478,0,0,0,.478.478H1.793V8.295a.19.19,0,0,1,.19-.19H3a.19.19,0,0,1,.19.19v1.98H4.508A.478.478,0,0,0,4.986,9.8V5.608H6.474v2.65a.812.812,0,0,0,.811.811h1.1v.209a.273.273,0,0,0,.273.273H9.739a.273.273,0,0,0,.273-.273V8.195a.273.273,0,0,0-.273-.273H8.655a.273.273,0,0,0-.273.273V8.4h-1.1a.145.145,0,0,1-.145-.145V5.608H8.383v.209a.273.273,0,0,0,.273.273H9.739a.273.273,0,0,0,.273-.273V4.734a.273.273,0,0,0-.273-.273H8.655a.273.273,0,0,0-.273.273v.208H7.14V2.292a.145.145,0,0,1,.145-.145h1.1v.209A.273.273,0,0,0,8.655,2.629ZM2.077,7.2a.19.19,0,0,1-.19.19H1.132a.19.19,0,0,1-.19-.19V6.445a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19V7.2Zm0-1.7a.19.19,0,0,1-.19.19H1.132a.19.19,0,0,1-.19-.19V4.748a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19V5.5Zm0-1.7a.19.19,0,0,1-.19.19H1.132a.19.19,0,0,1-.19-.19V3.051a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19V3.8Zm0-1.7a.19.19,0,0,1-.19.19H1.132a.19.19,0,0,1-.19-.19V1.354a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19v.754ZM4.044,7.2a.19.19,0,0,1-.19.19H3.1a.19.19,0,0,1-.19-.19V6.445a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19Zm0-1.7a.19.19,0,0,1-.19.19H3.1a.19.19,0,0,1-.19-.19V4.748a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19Zm0-1.7a.19.19,0,0,1-.19.19H3.1a.19.19,0,0,1-.19-.19V3.051a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19Zm0-1.7a.19.19,0,0,1-.19.19H3.1a.19.19,0,0,1-.19-.19V1.354a.19.19,0,0,1,.19-.19h.754a.19.19,0,0,1,.19.19Z" transform="translate(0 -0.275)" fill="#FFFFFF"/>
                           </g>
                         </g>
-                      </svg> 
+                      </svg>
                       Города
                     </a>
                   </li>
@@ -90,46 +101,9 @@ class PageHeader extends PureComponent {
 
             <div className="page-header__with-drop-down">
 
-              <div className="page-header__item page-header__user" data-key={`Администратор`}>
-                <a 
-                  href="#"
-                  onClick={this._menuItemClickHandler}
-                  className="page-header__drop-down-button"
-                >
-                  <svg width="7" height="10" viewBox="0 0 7 10">
-                    <g transform="translate(-82.022 -8.666)">
-                      <path d="M88.62,11.1a3.168,3.168,0,0,0-6.161,0,.566.566,0,0,0-.437.55v.745a.567.567,0,0,0,.566.567h.371a.158.158,0,0,0,.158-.158V11.2a2.5,2.5,0,0,1,4.843,0v1.6a.158.158,0,0,0,.158.158h.371a.567.567,0,0,0,.566-.567v-.745A.566.566,0,0,0,88.62,11.1Z" fill="#FFFFFF"/>
-                      <path d="M95.993,241.176a1.275,1.275,0,0,1,.081.392,1.942,1.942,0,0,1-3.816,0,1.279,1.279,0,0,1,.081-.392,2.46,2.46,0,0,0-1.512,2.27v2.188a.842.842,0,0,0,.841.842h5a.841.841,0,0,0,.841-.842v-2.188A2.46,2.46,0,0,0,95.993,241.176Z" transform="translate(-8.627 -227.81)" fill="#FFFFFF"/>
-                      <path d="M150.972,71.047a2.171,2.171,0,0,0,1.805-1.219,2.972,2.972,0,0,0,.153-.321,2.62,2.62,0,0,0,.209-.989,2.167,2.167,0,1,0-4.334,0,2.634,2.634,0,0,0,.208.989,3.121,3.121,0,0,0,.153.321A2.172,2.172,0,0,0,150.972,71.047Zm0-3.895a1.367,1.367,0,0,1,1.365,1.366c0,.778-.63,1.727-1.365,1.727s-1.366-.95-1.366-1.727A1.367,1.367,0,0,1,150.972,67.153Z" transform="translate(-65.433 -56.519)" fill="#FFFFFF"/>
-                    </g>
-                  </svg>
-                  Администратор
-                  <svg width="6" height="9" viewBox="0 0 6 9">
-                    <g transform="translate(0 8.942) rotate(-90)">
-                      <g>
-                        <path d="M1.054,0,4.471,3.506,7.888,0,8.942,1.082,4.471,5.671,0,1.082Z" fill="#fff"/>
-                      </g>
-                    </g>
-                  </svg>
-                </a>
-              </div>
-
-              <ul className="page-header__item page-header__drop-down page-header__drop-down--hide">
-                <li className="page-header__item page-header__drop-down-item">
-                  <svg width="6" height="5" viewBox="0 0 6 5">
-                    <g transform="translate(0 -41.115)">
-                      <g transform="translate(0 41.115)">
-                        <path d="M2.5,45.74a.1.1,0,0,1-.008-.053c0-.014-.006-.026-.027-.035s-.031-.016-.031-.021-.015-.009-.045-.012l-.045,0H1.125a.6.6,0,0,1-.441-.184A.6.6,0,0,1,.5,44.99V42.24A.6.6,0,0,1,.684,41.8a.6.6,0,0,1,.441-.184h1.25a.118.118,0,0,0,.08-.025.13.13,0,0,0,.039-.076.657.657,0,0,0,.012-.092.972.972,0,0,0,0-.1q0-.062,0-.078a.127.127,0,0,0-.125-.125H1.125a1.084,1.084,0,0,0-.795.33A1.084,1.084,0,0,0,0,42.24v2.75a1.083,1.083,0,0,0,.33.795,1.083,1.083,0,0,0,.795.33h1.25a.119.119,0,0,0,.08-.025.13.13,0,0,0,.039-.076.659.659,0,0,0,.012-.092.971.971,0,0,0,0-.1Q2.5,45.756,2.5,45.74Z" transform="translate(0 -41.115)" fill="#fefefe"/>
-                        <path d="M114.184,52.445l-2.125-2.125a.25.25,0,0,0-.426.176v1.125h-1.75a.253.253,0,0,0-.25.25v1.5a.254.254,0,0,0,.25.25h1.75v1.125a.249.249,0,0,0,.426.176l2.125-2.125a.245.245,0,0,0,0-.352Z" transform="translate(-108.133 -50.121)" fill="#fefefe"/>
-                      </g>
-                    </g>
-                  </svg>
-                  <a 
-                    href="#"
-                    onClick={this._menuItemClickHandler}
-                  >Выйти</a>
-                </li>
-              </ul>
+              <PageHeaderUserButtonWrapper
+                onLogOutButtonClick = {this._logOutClickHandler}
+              />
 
             </div>
           </div>
@@ -143,6 +117,7 @@ class PageHeader extends PureComponent {
 PageHeader.propTypes = {
   selectedMenuItem: PropTypes.number,
   onMenuItemClick: PropTypes.func.isRequired,
+  onLogOutButtonClick: PropTypes.func.isRequired,
 };
 
 

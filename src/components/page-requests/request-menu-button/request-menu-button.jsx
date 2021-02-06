@@ -17,14 +17,14 @@ class RequestMenuButton extends PureComponent {
   _execRequestClick(evt) {
     evt.preventDefault();
     const requestId = evt.target.dataset.requestid;
-    console.log(`Выполнить заявку ${requestId}`);
+    alert(`Выполнить заявку ${requestId}`);
     this.props.onHideMenu();
   }
 
   _deleteRequestClick(evt) {
     evt.preventDefault();
     const requestId = evt.target.dataset.requestid;
-    console.log(`Удалить заявку ${requestId}`);
+    alert(`Удалить заявку ${requestId}`);
     this.props.onHideMenu();
   }
 

@@ -24,7 +24,14 @@ class App extends PureComponent {
     this.state = {
       currentPage: Screens.MAIN_SCREEN,
     };
+
+    this._logOutHandler = this._logOutHandler.bind(this);
   }
+
+
+  _logOutHandler() {
+    alert(`Выход из системы`);
+  };
 
   _menuHeaderItemClickHandler(pageIndex) {
     this.setState({
@@ -46,6 +53,7 @@ class App extends PureComponent {
             <PageHeader
               selectedMenuItem = {Screens.USERS_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
+              onLogOutButtonClick = {this._logOutHandler}
             />
             <PageUsers
               UsersList = {UsersList}
@@ -63,6 +71,7 @@ class App extends PureComponent {
             <PageHeader
               selectedMenuItem = {Screens.CITIES_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
+              onLogOutButtonClick = {this._logOutHandler}
             />
           </React.Fragment>
         );
@@ -73,6 +82,7 @@ class App extends PureComponent {
             <PageHeader
               selectedMenuItem = {Screens.REQUESTS_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
+              onLogOutButtonClick = {this._logOutHandler}
             />
             <PageRequests
               RequestsList = {RequestsList}
@@ -89,6 +99,7 @@ class App extends PureComponent {
             <PageHeader
               selectedMenuItem = {Screens.MAIN_SCREEN}
               onMenuItemClick = {this._menuHeaderItemClickHandler}
+              onLogOutButtonClick = {this._logOutHandler}
             />
             <PageMain
               EventsList = {EventsList}
