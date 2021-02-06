@@ -1,7 +1,7 @@
 export const Users = [
   {
     userStatus: `state-icon--black`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `1`,
     userFIO: `Иванов Иван`,
     userPhone: `+79207388549`,
@@ -20,7 +20,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--black`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `2`,
     userFIO: `Пирогов Евгений`,
     userPhone: `+79255579632`,
@@ -39,7 +39,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--black`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `3`,
     userFIO: `Егоров Аркадий`,
     userPhone: `+79266587311`,
@@ -58,7 +58,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--purple`,
-    userAuthorized: false,
+    userAuthorized: `нет`,
     userId: `4`,
     userFIO: `Котов Роман`,
     userPhone: `+79271121312`,
@@ -77,7 +77,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--purple`,
-    userAuthorized: false,
+    userAuthorized: `нет`,
     userId: `5`,
     userFIO: `Кормухин Егор`,
     userPhone: `+79272585647`,
@@ -96,7 +96,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `6`,
     userFIO: `Расторопов Вячеслав`,
     userPhone: `+79616985412`,
@@ -115,7 +115,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `7`,
     userFIO: `Расторопов Вячеслав`,
     userPhone: `+79616985412`,
@@ -134,7 +134,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `8`,
     userFIO: `Расторопов Вячеслав`,
     userPhone: `+79616985412`,
@@ -153,7 +153,7 @@ export const Users = [
   },
   {
     userStatus: `state-icon--blue`,
-    userAuthorized: true,
+    userAuthorized: `да`,
     userId: `9`,
     userFIO: `Расторопов Вячеслав`,
     userPhone: `+79616985412`,
