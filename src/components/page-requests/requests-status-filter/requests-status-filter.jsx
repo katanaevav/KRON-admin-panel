@@ -54,11 +54,11 @@ class RequestsStatusFilter extends PureComponent {
               </div>
 
               <div className="filter__item">
-                <button className="filter__label filter__label--green" data-filter="state-icon--green" htmlFor="filter-2" onClick={this._filterItemButtonClick}>Авторизованные</button>
+                <button className="filter__label filter__label--green" data-filter="state-icon--green" htmlFor="filter-2" onClick={this._filterItemButtonClick}>Выполненные</button>
               </div>
 
               <div className="filter__item">
-                <button className="filter__label filter__label--red" data-filter="state-icon--red" htmlFor="filter-3" onClick={this._filterItemButtonClick}>Водители</button>
+                <button className="filter__label filter__label--red" data-filter="state-icon--red" htmlFor="filter-3" onClick={this._filterItemButtonClick}>Не выполненные</button>
               </div>
 
               <div>

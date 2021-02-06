@@ -20,12 +20,30 @@ class App extends PureComponent {
     super(props);
 
     this._menuHeaderItemClickHandler = this._menuHeaderItemClickHandler.bind(this);
+    this._mainBigButtonClickHandler = this._mainBigButtonClickHandler.bind(this);
 
     this.state = {
       currentPage: Screens.MAIN_SCREEN,
     };
 
     this._logOutHandler = this._logOutHandler.bind(this);
+  }
+
+
+  _mainBigButtonClickHandler(evt) {
+    evt.preventDefault();
+
+    if (evt.target.dataset.group === `/users`) {
+      this.props.onUserStatusFilterClick(evt.target.dataset.button);
+      this.setState({
+        currentPage: Screens.USERS_SCREEN,
+      });
+    } else if (evt.target.dataset.group === `/requests`) {
+      this.props.onRequestsStatusFilterClick(evt.target.dataset.button);
+      this.setState({
+        currentPage: Screens.REQUESTS_SCREEN,
+      });
+    }
   }
 
 
@@ -41,7 +59,7 @@ class App extends PureComponent {
 
   _renderApp() {
     const {currentPage} = this.state;
-    const {EventsList, UsersList, RequestsList} = this.props;
+    const {EventsList, UsersList, RequestsList, MainButtonsGroups} = this.props;
     const {onUserStatusFilterClick, onRequestsStatusFilterClick} = this.props;
     const {passangersCount, driversCount, usersCount} = this.props;
     const {requestsCount, requestsAvgMark} = this.props;
@@ -103,6 +121,8 @@ class App extends PureComponent {
             />
             <PageMain
               EventsList = {EventsList}
+              onBigButtonClick = {this._mainBigButtonClickHandler}
+              MainButtonsGroups = {MainButtonsGroups}
             />
           </React.Fragment>
         );
@@ -132,6 +152,8 @@ App.propTypes = {
   UsersList: PropTypes.array.isRequired,
   RequestsList: PropTypes.array.isRequired,
 
+  MainButtonsGroups: PropTypes.array.isRequired,
+
   passangersCount: PropTypes.number,
   driversCount: PropTypes.number,
   usersCount: PropTypes.number,
@@ -143,6 +165,7 @@ App.propTypes = {
   currentUsersStatusFilter: PropTypes.string.isRequired,
 
   onUserStatusFilterClick: PropTypes.func.isRequired,
+  onRequestsStatusFilterClick: PropTypes.func.isRequired,
 };
 
 
@@ -150,6 +173,8 @@ const mapStateToProps = (state) => ({
   EventsList: state.EventsList,
   UsersList: getLocalFilteredUsers(state.UsersList, state.currentUsersStatusFilter),
   RequestsList: getLocalFilteredRequests(state.RequestsList, state.currentRequestsStatusFilter),
+
+  MainButtonsGroups: state.MainButtonsGroups,
 
   passangersCount: state.passangersCount,
   driversCount: state.driversCount,

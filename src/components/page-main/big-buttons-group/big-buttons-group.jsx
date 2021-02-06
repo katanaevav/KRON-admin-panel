@@ -4,7 +4,7 @@ import BigButton from "../big-button/big-button.jsx"
 
 const BigButtonsGroup = (props) => {
 
-  const {groupIcon, groupName, groupHrefLinkToAll, groupButtons} = props;
+  const {groupIcon, groupName, groupHrefLinkToAll, groupButtons, onBigButtonClick} = props;
 
   // buttonsGroupName: `Пользователи`,
   // buttonsGroupIco: `/sprite.svg#users-ico`,
@@ -19,6 +19,7 @@ const BigButtonsGroup = (props) => {
       buttonDescription={button.buttonDescription}
       buttonIconColor={button.buttonIconColor}
       buttonLink={button.buttonLink}
+      onBigButtonClick = {onBigButtonClick}
     />
   ));
 
@@ -30,7 +31,7 @@ const BigButtonsGroup = (props) => {
             <use xlinkHref={groupIcon}></use>
           </svg>
           <h2 className="dashboard-groups__title">{groupName}</h2>
-          <a className="dashboard-groups__link-to-all" href={groupHrefLinkToAll}>посмотреть все</a>
+          <a className="dashboard-groups__link-to-all" href={groupHrefLinkToAll} data-group={groupHrefLinkToAll} data-button={``} onClick={onBigButtonClick}>посмотреть все</a>
         </div>
         <ul className="buttons-group__buttons">
           {buttons}
@@ -46,6 +47,7 @@ BigButtonsGroup.propTypes = {
   groupName: PropTypes.string.isRequired,
   groupHrefLinkToAll: PropTypes.string.isRequired,
   groupButtons: PropTypes.array.isRequired,
+  onBigButtonClick: PropTypes.func.isRequired,
 };
 
 

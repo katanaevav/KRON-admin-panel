@@ -3,12 +3,12 @@ import PropTypes from "prop-types";
 import BigButtonsGroups from "../big-buttons-groups/big-buttons-groups.jsx";
 import MainEvents from "../main-events/main-events.jsx";
 
-import {MainButtonsGroups} from "../../../const.js";
+// import {MainButtonsGroups} from "../../../const.js";
 
 
 const PageMain = (props) => {
 
-  const {EventsList} = props;
+  const {MainButtonsGroups, EventsList, onBigButtonClick} = props;
 
   return (
     <React.Fragment>
@@ -18,6 +18,7 @@ const PageMain = (props) => {
 
             <BigButtonsGroups
               buttonsGroups = {MainButtonsGroups}
+              onBigButtonClick = {onBigButtonClick}
             />
 
             <MainEvents
@@ -34,6 +35,8 @@ const PageMain = (props) => {
 
 PageMain.propTypes = {
   EventsList: PropTypes.array.isRequired,
+  onBigButtonClick: PropTypes.func.isRequired,
+  MainButtonsGroups: PropTypes.array.isRequired,
 };
 
 

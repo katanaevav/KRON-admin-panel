@@ -5,15 +5,16 @@ import BigButtonsGroup from "../big-buttons-group/big-buttons-group.jsx";
 
 const BigButtonsGroups = (props) => {
 
-  const {buttonsGroups} = props;
+  const {buttonsGroups, onBigButtonClick} = props;
 
   const groups = buttonsGroups.map((group) => (
     <BigButtonsGroup
-      key={group.buttonsGroupName}
-      groupIcon={group.buttonsGroupIco}
-      groupName={group.buttonsGroupName}
-      groupHrefLinkToAll={group.buttonsGroupLinkToAll}
-      groupButtons={group.buttonsGroupButtons}
+      key = {group.buttonsGroupName}
+      groupIcon = {group.buttonsGroupIco}
+      groupName = {group.buttonsGroupName}
+      groupHrefLinkToAll = {group.buttonsGroupLinkToAll}
+      groupButtons = {group.buttonsGroupButtons}
+      onBigButtonClick = {onBigButtonClick}
     />
   ));
 
@@ -29,8 +30,9 @@ const BigButtonsGroups = (props) => {
 };
 
 
-BigButtonsGroup.propTypes = {
+BigButtonsGroups.propTypes = {
   buttonsGroups: PropTypes.array,
+  onBigButtonClick: PropTypes.func.isRequired,
 };
 
 
