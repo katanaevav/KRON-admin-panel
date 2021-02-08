@@ -104,6 +104,7 @@ class App extends PureComponent {
             />
             <PageRequests
               RequestsList = {RequestsList}
+              UsersList = {UsersList}
               onFilterStatusItemButtonClick = {onRequestsStatusFilterClick}
               requestsCount = {requestsCount}
               requestsAvgMark = {requestsAvgMark}

@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import RequestsTable from "../requests-table/requests-table.jsx";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
-import {getUserKeyMapById} from "../../../selectors.js";
+import {getUserKeyMapById} from "../../../reducer/selectors.js";
 
 
 class PageRequestsData extends PureComponent {
@@ -20,7 +20,7 @@ class PageRequestsData extends PureComponent {
   }
 
   _userIdClickHandle(userId) {
-    this.selectedRequest = getUserKeyMapById(userId);
+    this.selectedRequest = getUserKeyMapById(this.props.UsersList, userId);
     this.setState({ showModalInfo: true });
   }
 
@@ -115,6 +115,7 @@ class PageRequestsData extends PureComponent {
 
 PageRequestsData.propTypes = {
   RequestsList: PropTypes.array.isRequired,
+  UsersList: PropTypes.array.isRequired,
 };
 
 

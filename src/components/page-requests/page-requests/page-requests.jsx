@@ -16,7 +16,7 @@ class PageRequests extends PureComponent {
   }
 
   render() {
-    const {RequestsList, requestsCount, requestsAvgMark} = this.props;
+    const {RequestsList, UsersList, requestsCount, requestsAvgMark} = this.props;
 
     return (
       <React.Fragment>
@@ -32,6 +32,7 @@ class PageRequests extends PureComponent {
               />
               <PageRequestsData
                 RequestsList = {RequestsList}
+                UsersList = {UsersList}
               />
 
             </div>
@@ -46,6 +47,7 @@ class PageRequests extends PureComponent {
 
 PageRequests.propTypes = {
   RequestsList: PropTypes.array.isRequired,
+  UsersList: PropTypes.array.isRequired,
   onFilterStatusItemButtonClick: PropTypes.func.isRequired,
   requestsCount: PropTypes.number,
   requestsAvgMark: PropTypes.number,

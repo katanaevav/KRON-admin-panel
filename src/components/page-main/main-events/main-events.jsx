@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import MainEvent from "../main-event/main-event.jsx";
 import InfoModal from "../../info-modal/info-modal/info-modal.jsx";
-import {getEventKeyMapById} from "../../../selectors.js";
+import {getEventKeyMapById} from "../../../reducer/selectors.js";
 
 
 class MainEvents extends PureComponent {
@@ -20,7 +20,7 @@ class MainEvents extends PureComponent {
   }
 
   _eventIdClickHandle(eventId) {
-    this.selectedEvent = getEventKeyMapById(eventId);
+    this.selectedEvent = getEventKeyMapById(this.props.EventsList, eventId);
     this.setState({ showModalInfo: true });
   }
 
